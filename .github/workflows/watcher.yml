@@ -1,0 +1,79 @@
+# ========================================
+# GitHub Actions ワークフロー
+# 産業医講習監視システム - 定期実行
+# ========================================
+#
+# 毎日 06:00 JST (= 21:00 UTC) に自動実行し、
+# 新着・更新があれば RSS を更新して GitHub Pages に公開します。
+# ========================================
+
+name: 産業医講習監視
+
+on:
+  # 毎日 21:00 UTC (= 06:00 JST) に実行
+  schedule:
+    - cron: '0 21 * * *'
+
+  # 手動実行も可能
+  workflow_dispatch:
+
+  # mainブランチへのpush時にも実行（テスト用）
+  push:
+    branches:
+      - main
+    paths:
+      - 'watcher.py'
+      - 'src/**'
+      - '.github/workflows/watcher.yml'
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+
+    # GitHub Pages へのデプロイ権限を付与
+    permissions:
+      contents: write
+
+    steps:
+      # リポジトリをチェックアウト
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      # Python をセットアップ
+      - name: Python をセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      # 依存ライブラリをインストール
+      - name: 依存ライブラリをインストール
+        run: pip install -r requirements.txt
+
+      # 前回の状態データベースを復元（キャッシュ）
+      - name: 状態データベースを復元
+        uses: actions/cache@v4
+        with:
+          path: data/state.sqlite3
+          key: state-db-${{ github.run_id }}
+          restore-keys: |
+            state-db-
+
+      # 巡回を実行
+      - name: 巡回を実行
+        run: python watcher.py --days 30
+
+      # RSS が更新された場合のみコミット＆プッシュ
+      - name: 変更をコミット
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # docs/feed.xml が変更されている場合のみコミット
+          if git diff --quiet docs/feed.xml; then
+            echo "RSSに変更なし。スキップします。"
+          else
+            git add docs/feed.xml
+            git commit -m "🔄 RSSフィードを更新 ($(date '+%Y-%m-%d %H:%M'))"
+            git push
+          fi
