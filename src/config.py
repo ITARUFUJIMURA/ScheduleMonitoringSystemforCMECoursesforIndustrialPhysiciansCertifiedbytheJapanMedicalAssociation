@@ -80,7 +80,7 @@ WATCH_TARGETS = [
 RSS_CONFIG = {
     "title": "産業医講習会 新着情報",
     "description": "日本医師会認定産業医の単位講習（岩手県盛岡市中心＋全国）の新着・更新情報",
-    "link": "https://your-github-username.github.io/your-repo-name/feed.xml",  # GitHub Pages URL（後で変更）
+    "link": "https://itarufujimura.github.io/ScheduleMonitoringSystemforCMECoursesforIndustrialPhysiciansCertifiedbytheJapanMedicalAssociation/feed.xml",
     "language": "ja",
 }
 
