@@ -8,7 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 13 Jul 2026 21:58:13 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 22:05:39 +0000</lastBuildDate>
     <item>
       <title>詳細PDFをダウンロード</title>
       <link>https://www.iwates.johas.go.jp/wp/wp-content/uploads/2026/06/8.29.pdf</link>
@@ -92,6 +92,15 @@
 &lt;p&gt;&lt;a href="https://www.iwate.med.or.jp/2025/11/13/2867/"&gt;▶ 詳細を見る&lt;/a&gt;&lt;/p&gt;</description>
       <guid isPermaLink="true">https://www.iwate.med.or.jp/2025/11/13/2867/</guid>
       <pubDate>Fri, 06 Feb 2026 05:31:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>詳細PDFをダウンロード</title>
+      <link>https://www.iwates.johas.go.jp/wp/wp-content/uploads/2026/07/9.19.pdf</link>
+      <description>&lt;p&gt;&lt;strong&gt;【新着】&lt;/strong&gt; 岩手産業保健総合支援センター（産業医研修）&lt;/p&gt;
+&lt;p&gt;🔍 検出: 2026/07/24 22:05&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.iwates.johas.go.jp/wp/wp-content/uploads/2026/07/9.19.pdf"&gt;▶ 詳細を見る&lt;/a&gt;&lt;/p&gt;</description>
+      <guid isPermaLink="true">https://www.iwates.johas.go.jp/wp/wp-content/uploads/2026/07/9.19.pdf</guid>
+      <pubDate>Fri, 24 Jul 2026 22:05:32 +0000</pubDate>
     </item>
   </channel>
 </rss>
